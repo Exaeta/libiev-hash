@@ -27,8 +27,8 @@ namespace iev
 
     blake2b(blake2b<N>&&)=default;
     blake2b(blake2b<N> const&)=default;
-    //    blake2b& operator=(blake2b<N> const &)=default; 
-
+    blake2b& operator=(blake2b<N> const &)=default; 
+    blake2b& operator=(blake2b<N> &&)=default; 
 
 
     class incremental_hasher
@@ -40,7 +40,7 @@ namespace iev
 
       incremental_hasher(uint8_t const * key, size_t keylen)
       {
-        ::cyrpto_generichash_blake2b_init(&private_state, key, keylen);
+        ::crypto_generichash_blake2b_init(&private_state, key, keylen, N/8);
       }
 
       void update(uint8_t const * data, size_t datalen)
