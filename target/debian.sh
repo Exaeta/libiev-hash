@@ -8,6 +8,7 @@ BUILDDIR="./build/${PACKAGE_FULLNAME}"
 
 mkdir -p $BUILDDIR/usr/include/iev
 cp ./src/blake2b.hh $BUILDDIR/usr/include/iev/blake2b
+cp ./src/sha512.hh $BUILDDIR/usr/include/iev/sha512
 mkdir -p $BUILDDIR/DEBIAN/
 printf "Package: ${PACKAGE_NAME}\nVersion: ${PACKAGE_VERSION}\nSection: base\nPriority: Optional\nArchitecture: all\nDepends:\nDescription: LibIEV Hash Functions
  Contians: Blake2b
