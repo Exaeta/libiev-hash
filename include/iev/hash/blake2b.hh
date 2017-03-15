@@ -3,7 +3,8 @@
 
 
 #include <sodium.h>
-#include <array> 
+#include <array>
+#include <vector>
 
 namespace iev
 {
@@ -29,6 +30,8 @@ namespace iev
     blake2b(blake2b<N> const&)=default;
     blake2b& operator=(blake2b<N> const &)=default; 
     blake2b& operator=(blake2b<N> &&)=default; 
+
+
 
 
     class incremental_hasher
@@ -57,6 +60,19 @@ namespace iev
         return output;
       }
     };
+
+    
+    template <typename It>
+    static blake2b<N> calculate(It begin, It end, uint8_t const *key, size_t keysize)
+    {
+      std::vector<uint8_t> data;
+      data.assign(begin, end);
+      blake2b<N> hash;
+      blake2b<N>::incremental_hasher hasher(key, keysize);
+      hasher.update(data.data(), data.size());
+      hash = hasher.finalize();
+      return hash;
+    }
   };
 }
 
