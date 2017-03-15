@@ -1,3 +1,5 @@
+// Copyright 2017 Ryan Nicholl <r.p.nicholl@gmail.com>
+
 #ifndef IEV_BLAKE2B_HASH_HH
 #define IEV_BLAKE2B_HASH_HH
 
