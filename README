@@ -1,1 +1,7 @@
-Wrappers around libsodium for now.
+Wrapper around libsodium for now.
+
+To build run:
+
+bash target/debian.sh
+
+Output will be in build/
